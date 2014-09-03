@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+
+        <script src="js/vendor.js"></script>
+        <script src="js/functions.js"></script>
+
+        <link rel="stylesheet" href="css/normalize.css">
+        <link rel="stylesheet" href="css/styles.css">
+
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    </head>
+    <body>
+        <!--[id lte IE 8]>
+        <div class="browsehappycontain">
+            <p class="browsehappy message-box">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        </div>
+        <!--<![endif]-->
+
+        <div id="container">
+            <main>
+                <section>
+                    <div class="inner">
+                        <h2>Competition Time</h2>
+                        <p>Lorem ipsum dolor sit amet</p>
+
+                        <div style="margin-left: 81px;" class="like-box">
+                            <div
+                                class="fb-like"
+                                data-action="recommend"
+                                data-href="<?php echo $like_url ?>"
+                                data-send="false"
+                                data-layout="button_count"
+                                data-width="450"
+                                data-show-faces="false">
+                            </div>
+                        </div><!-- /.like -->
+
+                        <p class="step green">Fill out the entry form below<?php if( $source != 'magicmum'){ ?>, or <a href="#" onclick="MyObject.triggerLoadingIcon(); return MPClient.getCurrentUser( 'MyObject.getCurrentUser' );">connect with your MummyPages account</a>.<img src="<?php echo $path_to_img ?>mp_loader.gif" style="display:none;" /><?php } ?> </p>
+
+                        <div class="form-container clearfix">
+                            <form id="entry">
+                                <input type="hidden" name="landing_id" value="<?php echo $tag; ?>" />
+                                <input type="hidden" name="origin" value="landing" />
+                                <input type="hidden" name="source" value="<?php echo $source; ?>" />
+
+                                <?php if( isset( $user_data['user_id'] ) ): ?>
+                                <input type="hidden" name="user_id" id="user_id" value="<?php echo $user_data['user_id'] ?>" />
+                                <?php endif; ?>
+
+                                <input type="hidden" name="test_mode" value="<?php echo get_field('test_mode') ?>" />
+
+                                <p class="step">Step 1: Recommend this page</p>
+                                <p class="step">Step 2: Fill in your details</p>
+
+                                <div class="col-left">
+                                    <div class="row clearfix">
+                                        <label>Name</label>
+                                        <input type="text" id="firstname" name="firstname" class="validate" data-rules="required" value="<?php echo isset( $user_data['name'] ) ? $user_data['name'] : ''; ?>" />
+                                    </div>
+
+                                    <div class="row clearfix">
+                                        <label>Email</label>
+                                        <input type="text" id="email" name="email" class="validate" data-rules="required,email" value="<?php echo isset( $user_data['email'] ) ? $user_data['email'] : ''; ?>" />
+                                    </div>
+
+                                    <div class="row clearfix">
+                                        <label>Phone</label>
+                                        <input type="text" name="phone" class="validate" data-rules="required" value="<?php echo isset( $user_data['phone'] ) ? $user_data['phone'] : ''; ?>" />
+                                    </div>
+
+                                </div>
+
+                                <div class="col-right">
+
+                                    <div class="row clearfix">
+                                        <label>Address</label>
+                                        <input type="text" name="address" class="validate" data-rules="required" value="<?php echo isset( $user_data['address'] ) ? $user_data['address'] : ''; ?>" />
+                                    </div>
+
+                                    <div class="row clearfix">
+                                        <label>County</label>
+                                        <select name="county" id="county" class="validate" data-rules="required">
+                                            <option value="">Please select</option>
+                                            <?php //he_generate_county_select('', true, isset( $user_data['county'] ) ? $user_data['county'] : '' ); ?>
+                                        </select>
+                                    </div>
+
+                                    <div class="row clearfix">
+                                        <label>Neighbourhood</label>
+                                        <select name="neighbourhood" id="neighbourhood" class="validate" data-rules="required">
+                                            <option value="">Please select</option>
+                                        </select>
+                                    </div>
+
+                                </div>
+
+                                <div class="clear"></div>
+
+                                <div class="row submit-row">
+                                    <a class="submit">Enter</a>
+                                    <img id="preloader" src="<?php echo $path_to_img ?>preloader.gif">
+                                    <p class="terms">
+                                        <a href="<?php echo $terms_url ?>" target="_blank">Terms and Conditions apply</a>
+                                    </p>
+                                    <p class="note">
+                                        By entering, you will be added to the Dunnes Stores mailing list.
+                                    </p>
+                                </div>
+                            </form><!-- end #entry -->
+                        </div>
+                    </div>
+                </section>
+            </main>
+
+        </div><!-- end #container -->
+    </body>
+</html>
